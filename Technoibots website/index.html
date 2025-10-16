@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technoibots FTC 31258</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="logo.png" />
+  <link rel="shortcut icon" href="logo.png">
+
+  <style>
+    :root {
+      --laranja: #ff7a00;
+      --preto: #0e0e0e;
+      --cinza: #1c1c1c;
+      --branco: #f5f5f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; scroll-behavior: smooth; }
+    body { background-color: var(--preto); color: var(--branco); overflow-x: hidden; }
+
+    header {
+      background-color: var(--cinza);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--laranja);
+    }
+
+    header img { height: 60px; }
+
+    nav a { color: var(--branco); text-decoration: none; margin-left: 2rem; font-weight: 600; transition: 0.3s; }
+    nav a:hover { color: var(--laranja); }
+
+    section { padding: 4rem 10%; }
+
+    /* Hero */
+    .hero {
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(14,14,14,1)), url('banner.jpg') center/cover;
+    }
+
+    .hero img { width: 500px; max-width: 90%; filter: drop-shadow(0 0 15px rgba(255, 122, 0, 0.7)); }
+    .hero p { font-size: 1.3rem; max-width: 700px; color: var(--branco); margin-top: 1rem; text-align: center; }
+
+    /* Sobre */
+    .sobre { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+    .sobre img { width: 400px; border-radius: 20px; box-shadow: 0 0 20px rgba(255, 122, 0, 0.4); }
+    .sobre div { flex: 1; }
+    .sobre h2 { color: var(--laranja); font-size: 2rem; margin-bottom: 1rem; }
+    .sobre p { line-height: 1.8; }
+
+    /* Conquistas */
+    .conquistas { text-align: center; padding-bottom: 10rem; }
+    .conquistas h2 { color: var(--laranja); font-size: 2.3rem; margin-bottom: 2rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .card { background: var(--cinza); border: 1px solid #333; border-radius: 15px; padding: 2rem; transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); border-color: var(--laranja); }
+    .card h3 { color: var(--laranja); margin-bottom: 0.5rem; }
+
+    /* Botão de contato fixo */
+    .contato-fixo {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--laranja); color: var(--branco);
+      border: none; padding: 0.8rem 1.5rem; border-radius: 50px;
+      font-weight: 600; cursor: pointer; z-index: 200;
+      box-shadow: 0 0 15px rgba(255, 122, 0, 0.6); transition: 0.3s;
+    }
+    .contato-fixo:hover { background: #ff9233; transform: scale(1.05); }
+
+    /* Pop-up de contato */
+    .popup {
+      position: fixed; bottom: 100px; right: 40px; width: 320px;
+      background: var(--cinza); border: 2px solid var(--laranja);
+      border-radius: 15px; padding: 1.5rem; display: none;
+      flex-direction: column; gap: 0.8rem; z-index: 300;
+      box-shadow: 0 0 20px rgba(255, 122, 0, 0.4); animation: slideUp 0.3s ease forwards;
+    }
+    @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .popup h3 { color: var(--laranja); text-align: center; margin-bottom: 0.5rem; }
+    .popup input, .popup textarea { width: 100%; padding: 0.7rem; border-radius: 8px; border: none; background: #222; color: var(--branco); }
+    .popup button { background: var(--laranja); border: none; padding: 0.7rem; color: var(--branco); font-weight: 600; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+    .popup button:hover { background: #ff9233; }
+
+    footer { background: var(--cinza); text-align: center; padding: 1rem; border-top: 2px solid var(--laranja); margin-top: 2rem; font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      .sobre { flex-direction: column; text-align: center; }
+      .sobre img { width: 100%; max-width: 350px; }
+      header { flex-direction: column; }
+      nav { margin-top: 0.5rem; }
+      .popup { right: 10px; width: 90%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Technoibots">
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#conquistas">Conquistas</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="logo.png" alt="Technoibots FTC 31258">
+    <p>Equipe de robótica apaixonada por inovação, tecnologia e desafios. Representando com orgulho o Brasil nas competições de robótica.</p>
+  </section>
+
+  <section id="sobre" class="sobre">
+    <img src="team.jpeg" alt="Equipe Technoibots">
+    <div>
+      <h2>Sobre Nós</h2>
+      <p>
+        A Technoibots é uma equipe de robótica dedicada a competir e inovar em torneios como a FIRST Tech Challenge e Olimpíada Brasileira de Robótica.
+        Nosso time é formado por estudantes apaixonados por ciência e tecnologia, que acreditam que o trabalho em equipe, a criatividade e a persistência
+        são as chaves para transformar o futuro.
+      </p>
+    </div>
+  </section>
+
+  <section id="conquistas" class="conquistas">
+    <h2>Conquistas</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Torneio de Robótica de Gravataí</h3>
+        <p>1º Lugar - 2023 <br> 1º Lugar - 2024</p>
+      </div>
+      <div class="card">
+        <h3>OBR</h3>
+        <p>2º Lugar Modalidade Resgate - 2025</p>
+      </div>
+      <div class="card">
+        <h3>FTC</h3>
+        <p>1º Lugar - 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botão fixo -->
+  <button class="contato-fixo" id="abrirContato">Entre em Contato</button>
+
+  <!-- Pop-up de contato -->
+  <div class="popup" id="popupContato" aria-hidden="true">
+    <h3>Entre em Contato</h3>
+
+    <!-- NOTE: os atributos name devem corresponder às variáveis do seu template no EmailJS -->
+    <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
+    <input id="email" name="email" type="email" placeholder="Seu e-mail" required>
+    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Sua mensagem"></textarea>
+
+    <button id="enviarContato" type="button">Enviar</button>
+  </div>
+
+  <footer>
+    Technoibots FTC 31258 — © 2025 Todos os direitos reservados
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("FYQyVndkEKCrOBB03");
+    })();
+
+    const btn = document.getElementById("abrirContato");
+    const popup = document.getElementById("popupContato");
+
+    btn.addEventListener("click", () => {
+      popup.style.display = popup.style.display === "flex" ? "none" : "flex";
+    });
+
+    const enviarBtn = document.getElementById("enviarContato");
+
+    enviarBtn.addEventListener("click", function() {
+    const nome = document.querySelector("#popupContato input[type='text']").value.trim();
+    const email = document.querySelector("#popupContato input[type='email']").value.trim();
+    const mensagem = document.querySelector("#popupContato textarea").value.trim();
+
+    if (!nome || !email || !mensagem) {
+      alert("Por favor, preencha todos os campos antes de enviar.");
+      return;
+    }
+
+    // Validação simples de e-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Por favor, digite um e-mail válido.");
+      return;
+    }
+
+    // Alterar texto do botão e desabilitar enquanto envia
+    const textoOriginal = enviarBtn.innerText;
+    enviarBtn.innerText = "Enviando...";
+    enviarBtn.disabled = true;
+
+    emailjs.send("service_2gm0wft", "template_s35umot", {
+        name: nome,
+        from_name: nome,
+        email: email,
+        from_email: email,
+        message: mensagem,
+        title: "Nova mensagem do site da Technoibots",
+        time: new Date().toLocaleString("pt-BR")
+    })
+    .then(() => {
+        alert("Mensagem enviada com sucesso! 🚀");
+        popup.style.display = "none";
+    })
+    .catch((error) => {
+        console.error("Erro ao enviar mensagem:", error);
+        alert("Erro ao enviar mensagem. Tente novamente mais tarde.");
+    })
+    .finally(() => {
+        enviarBtn.innerText = textoOriginal;
+        enviarBtn.disabled = false;
+    });
+});
+  </script>
+
+  
+
+</body>
+</html>
